@@ -34,7 +34,7 @@ The viewer has a convenient checkbox to set it, but the path to the settings fil
 
 ## C++
 
-A client example
+A client example, which uses an elaborate logger class
 
 - `cpp\client\test\test\logger.cpp`
 
