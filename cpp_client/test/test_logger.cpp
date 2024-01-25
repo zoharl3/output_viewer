@@ -52,7 +52,7 @@ int main(int argc, char **argv)
     Log.end_block(1, "med STUFF 1");
 
     ////////////////////////////////////////////////////////////
-    Log.use_stream(std::cout);
+    //Log.use_stream(std::cout);
     Log.print() << "OSTREAM OUTPUT" << std::endl;
 
     Log.print() << "Hi" << std::endl;
@@ -86,6 +86,8 @@ int main(int argc, char **argv)
 
     ////////////////////////////////////////////////////////////
     // Go back to cout before the block finishes
-    Log.use_stream(std::cout);
+    //Log.use_stream(std::cout);
+    emphasize2( "That's it for now." );
+    println( "bye" );
 }
 
