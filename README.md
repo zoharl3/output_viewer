@@ -4,7 +4,7 @@ A C++/Python/Matlab logger that outputs formatted text to an external viewer.
 Motivation.
 I used to write Maya and Matlab plugins. When they crashed, I would lose my logging output. Also, at times they are buggy and won't output.
 
-I wrote a viewer purely in python that receives and output messages. 
+I wrote a viewer purely in python that receives and outputs messages. 
 
 - `output_viewer.py`
 
