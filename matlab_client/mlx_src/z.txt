@@ -1,0 +1,11 @@
+
+An MLX interface to send to output viewer (creates "send_output_viewerInterface.dll").
+Matlab tcp is broken:
+https://au.mathworks.com/matlabcentral/answers/1733010-tcpclient-slow-connection-2
+
+Usage:
+
+log = clib.send_output_viewer.OutputViewer;
+log.print( sprintf( 'hi\n' ) );
+
+I copied the logger source, but I should have referenced it directly.
