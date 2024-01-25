@@ -25,8 +25,6 @@ Use
 - `matlab\client\mlog.m`
 - `matlab\client\mlogn.m`
 
-from scripts. 
-
 The file 
 
 - `matlab\client\mlog.settings`
