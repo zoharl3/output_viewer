@@ -41,5 +41,5 @@ A client example
 - `cpp\client\test\test\logger.cpp`
 
 # screenshots
-![img](https://github.com/zoharl3/output\viewer/blob/main/screenshots/screenshot.png)
+![img](https://github.com/zoharl3/output_viewer/blob/main/screenshots/screenshot.png?raw=true)
 
