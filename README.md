@@ -1,32 +1,45 @@
-# output_viewer
-A (C++/Python/Matlab) logger that outputs formatted text to an external viewer.
+# Output Viewer
+A C++/Python/Matlab logger that outputs formatted text to an external viewer.
 
 Motivation.
-I used to write Maya and Matlab plugins, and when they crashed, I would lose my logging output. Also, at times they are buggy and won't output.
+I used to write Maya and Matlab plugins. When they crashed, I would lose my logging output. Also, at times they are buggy and won't output.
 
-I wrote a viewer purely in python that receives and output messages. It listens on a local socket port.
+I wrote a viewer purely in python that receives and output messages. 
+
+- `output_viewer.py`
+
+It listens on a local socket port.
 
 The following API communicate with it in different languages.
 
-Python
+## Python
 
-Just a simple client example.
-python_client\output_client_example.py
+Just a simple client example
 
-Matlab
+- `python\client\output\client\example.py`
+
+## Matlab
 
 Use
-matlab_client\mlog.m
-matlab_client\mlogn.m
+
+- `matlab\client\mlog.m`
+- `matlab\client\mlogn.m`
+
 from scripts. 
 
 The file 
-matlab_client\mlog.settings
-holds a flag (0/1) if to send to the viewer or not.
-The viewer has a convenient checkbox to set it, but the path to the settings file is currently hard-coded to my computer (change it, it's a python script, or just set the settings file manually).
 
-C++
+- `matlab\client\mlog.settings`
+
+holds a flag (0/1) if to send to the viewer or not.
+The viewer has a convenient checkbox to set it, but the path to the settings file is currently hard-coded to my computer (change it--it's a python script--or set the settings file manually).
+
+## C++
 
 A client example
-cpp_client\test\test_logger.cpp
+
+- `cpp\client\test\test\logger.cpp`
+
+# screenshots
+![img](https://github.com/zoharl3/output\viewer/blob/main/screenshots/screenshot.png)
 
