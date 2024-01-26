@@ -7,11 +7,11 @@ int main(int argc, char **argv)
 {
     int level = 3;
     if (argc == 2)
-        level = atoi(argv[1]);
-    Log.set_level(level);
+        level = atoi( argv[1] );
+    Log.set_level( level );
     std::cout << "Outputting at level " << Log.level() << std::endl;
 
-	Log.set_send_to_viewer(true);
+	Log.set_send_to_viewer( true );
 	//Log.send_to_viewer("hi viewer\n");
 	Log << "hi " << 0;
 	Log << std::endl;
@@ -86,7 +86,8 @@ int main(int argc, char **argv)
 
     ////////////////////////////////////////////////////////////
     // Go back to cout before the block finishes
-    //Log.use_stream(std::cout);
+//  Log.use_stream(std::cout);
+
     emphasize2( "That's it for now." );
     println( "bye" );
 }
