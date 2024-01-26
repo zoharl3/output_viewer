@@ -33,7 +33,7 @@ The file
 
 holds a flag (0/1) if to send to the viewer or not.
 The viewer has a convenient checkbox to set it. 
-The file is in the same dir as the matlab client, and the path to it needs to be set in `output_viewer.json` so the viewer would know where to look.
+The file is in the same directory as the matlab client, and the path to it needs to be set in `output_viewer.json` so the viewer would know where to look.
 
 ## C++
 
