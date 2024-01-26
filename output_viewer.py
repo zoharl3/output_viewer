@@ -5,12 +5,9 @@
 from PyQt4.QtCore import *
 from PyQt4.QtGui import * 
 from PyQt4.QtWebKit import *
-import sys, os, time, psutil
+import sys, os, time, psutil, json
 import socketserver
 import webbrowser
-
-# hard-coded path
-mlog_settings = r"C:\prj\confstruct\scripts\mlog.settings"
 
 # suppress output
 if 0:
@@ -31,6 +28,12 @@ g_modifier = '''<font size="6" face="Consolas" color="silver">'''
 class MyWindow(QWidget):
     def __init__(self, *args): 
         QWidget.__init__(self, *args)
+        
+        # mlog.settings
+        self.mlog_settings = r"C:\prj\confstruct\scripts\mlog.settings"
+        with open( 'output_viewer.json' ) as f:
+            data = json.load( f )
+            self.mlog_settings = data["mlog_settings"]
 
         # layout
         layout = QVBoxLayout()
@@ -75,7 +78,7 @@ class MyWindow(QWidget):
         layout2.addWidget(checkb)
         checkb.stateChanged.connect(self.cb_mlog_pressed)
         state = 1
-        with open( mlog_settings, 'r' ) as f:
+        with open( self.mlog_settings, 'r' ) as f:
             fstate = f.read(1)
             if fstate == '1':
                 state = 2
@@ -201,7 +204,7 @@ class MyWindow(QWidget):
         proc.kill()
 
     def cb_mlog_pressed(self, state):
-        with open( mlog_settings, 'w' ) as f:
+        with open( self.mlog_settings, 'w' ) as f:
             if state == 0:
                 f.write('0')
             else:

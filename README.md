@@ -30,13 +30,16 @@ The file
 - `matlab\client\mlog.settings`
 
 holds a flag (0/1) if to send to the viewer or not.
-The viewer has a convenient checkbox to set it, but the path to the settings file is currently hard-coded to my computer (change it--it's a python script--or set the settings file manually).
+The viewer has a convenient checkbox to set it. 
+The file is in the same dir as the matlab client, and the path to it needs to be set in `output_viewer.json` so the viewer would know where to look.
 
 ## C++
 
 A client example, which uses an elaborate logger class
 
 - `cpp\client\test\test\logger.cpp`
+
+Unlike the matlab interface, we use here a global Log variable, which has a method set_send_to_viewer() to turn on/off sending output to the viewer (so there's no need for a settings file). 
 
 # screenshots
 ![img](https://github.com/zoharl3/output_viewer/blob/main/screenshots/screenshot.png?raw=true)
