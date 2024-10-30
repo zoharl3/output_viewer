@@ -1,10 +1,8 @@
 
-// Has collisions in confstruct. It seems better if stdafx.h is empty. So disable precompiled header for this specific file.
-//#include "stdafx.h"
-
-#ifndef _CRT_SECURE_NO_WARNINGS
 #define _CRT_SECURE_NO_WARNINGS
-#endif 
+#pragma warning( disable : 4996 )
+
+#include "stdafx.h"
 
 #include <boost/asio.hpp>
 #include <boost/test/utils/nullstream.hpp>

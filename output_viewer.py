@@ -2,9 +2,10 @@
 # obsolete website
 # http://forums.cgsociety.org/showthread.php?f=89&t=1322430
 
-from PyQt4.QtCore import *
-from PyQt4.QtGui import * 
-from PyQt4.QtWebKit import *
+from PySide6.QtCore import *
+from PySide6.QtGui import *
+from PySide6.QtWidgets import *
+from PySide6.QtWebEngineCore import *
 import sys, os, time, psutil, json
 import socketserver
 import webbrowser
@@ -26,6 +27,8 @@ g_header = '''
 g_modifier = '''<font size="6" face="Consolas" color="silver">'''
 
 class MyWindow(QWidget):
+    sig_new_input = Signal( str )
+
     def __init__(self, *args): 
         QWidget.__init__(self, *args)
         
@@ -84,23 +87,23 @@ class MyWindow(QWidget):
                 state = 2
             else:
                 state = 0
-        checkb.setCheckState(state)
+        checkb.setCheckState( Qt.CheckState( state ) )
 
         checkb = QCheckBox('Wrap Text')
         layout2.addWidget(checkb)
         checkb.stateChanged.connect(self.wrap_text_pressed)
-        checkb.setCheckState(2)
+        checkb.setCheckState( Qt.CheckState( 2 ) )
 
         self.checkb_auto_scroll = QCheckBox('Auto-scroll')
         layout2.addWidget(self.checkb_auto_scroll)
         self.checkb_auto_scroll.stateChanged.connect(self.checkb_auto_scroll_pressed)
-        self.checkb_auto_scroll.setCheckState(2)
+        self.checkb_auto_scroll.setCheckState( Qt.CheckState( 2 ) )
 
-        self.connect(self, SIGNAL('new_input'), self.parse_input)
+        self.sig_new_input.connect( self.parse_input )
 
     def signal_new_input(self, html):
         # connected to parse_input
-        self.emit(SIGNAL('new_input'), html)
+        self.sig_new_input.emit( html )
 
     def parse_input(self, data):
         if self.data_len > 500000:
@@ -145,11 +148,11 @@ class MyWindow(QWidget):
                 #self.view.setHtml(self.text)
                 self.view.insertHtml(data)
             self.view.moveCursor(QTextCursor.End)
-        if not self.checkb_auto_scroll.checkState():
+        if not self.checkb_auto_scroll.checkState().value:
             self.view.verticalScrollBar().setValue(old_scrollbar_value)
         
     def checkb_auto_scroll_pressed(self):
-        if self.checkb_auto_scroll.checkState():
+        if self.checkb_auto_scroll.checkState().value:
             self.view.verticalScrollBar().setValue(self.view.verticalScrollBar().maximum())
         
     def clear_pressed(self):
@@ -264,7 +267,10 @@ def main():
     serverThread = ServerThread(win)
     serverThread.start()
 
-    sys.exit(app.exec_())
+    app.exec()
+    
+    serverThread.terminate()
+    serverThread.wait()
         
 if __name__ == "__main__":
     main()
