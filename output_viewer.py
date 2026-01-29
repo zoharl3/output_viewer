@@ -20,11 +20,15 @@ g_port = 32313
 g_vtype = 0 # viewer type: 0 - QTextEdit, 1 - QWebView (slow)
 
 # need to print something (e.g. '.') for the style to take effect (else it prints with spaces)
-g_header = '''
+#font = '<span style="font-family: Consolas; font-size: 15px; color: silver;">'
+#font = '<font size="6" face="Consolas" color="silver">'
+font = '' # setting QFont instead
+st_init = '.'
+g_header = f'''
 <body bgcolor="black">
-<font size="6" face="Consolas" color="silver">.<br>
+{font}{st_init}<br>
 '''
-g_modifier = '''<font size="6" face="Consolas" color="silver">'''
+g_modifier = font
 
 class MyWindow(QWidget):
     sig_new_input = Signal( str )
@@ -51,11 +55,11 @@ class MyWindow(QWidget):
             self.view.setHtml(text)
         else:
             self.view = QTextEdit()
-            #self.view.setText(text)
-            self.view.setHtml(text)
+            font = QFont("Consolas", 15) 
+            self.view.setFont(font)
+            #self.view.setText('text')
+            #self.view.setHtml(text)
             self.view.setReadOnly(True)
-            #self.view.setFontPointSize(12)
-            #self.view.setTextColor(QColor(192,1,1))
         layout.addWidget(self.view)
 
         layout2 = QHBoxLayout()
